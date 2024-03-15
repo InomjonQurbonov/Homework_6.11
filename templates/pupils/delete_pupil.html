@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Confirm Delete
+{% endblock %}
+
+{% block content %}
+  <h1>Are you sure you want to delete?</h1>
+  <p>This action cannot be undone.</p>
+
+  <p>Item details:</p>
+  <ul>
+    <li>Name:{{ pupil.name }} </li>
+    <li>Description:Najot Ta'lim o'quvchisi</li>
+    </ul>
+
+  <form action="{% url 'delete_pupil' pupil.pk%}" method="post">
+    {% csrf_token %}
+      {% if pupil.name %}
+      	<button type="submit" class="btn btn-danger">Delete</button>
+      {% else %}
+          <a href="{% url 'pupils_list' %}" class="btn btn-secondary">Cancel</a>
+      {% endif %}
+  </form>
+{% endblock %}

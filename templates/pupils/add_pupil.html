@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	AddPupil
+{% endblock %}
+
+{% block content %}
+	<h1>Add New pupil</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Insert pupil's data</legend>
+            <p>
+                <label for="name">Name:</label>
+                <input type="text" name="name" placeholder="Name" required><br>
+            </p>
+            <p>
+                <label for="month_1">FirstMonth:</label>
+                <input type="number" name="month_1" placeholder="First month points" min="30" max="60" required><br>
+            </p>
+            <p>
+                <label for="month_2">SecondMonth:</label>
+                <input type="number" name="month_2" placeholder="Second month points" min="30" max="60" required><br>
+            </p>
+            <p>
+                <label for="month_3">ThirdMonth:</label>
+                <input type="number" name="month_3" placeholder="Third month points" min="30" max="60" required><br>
+            </p>
+            <p>
+                <label for="all_points">AllPoints:</label>
+                <input type="number" name="all_points" placeholder="All points" min="30" max="100" required><br>
+            </p>
+
+            <p>
+                <label for="image">Image:</label>
+                <input type="file" name="image"><br>
+            </p>
+        </fieldset>
+        <input type="submit" value="AddPupil" class="btn btn-success">
+    </form>
+{% endblock %}

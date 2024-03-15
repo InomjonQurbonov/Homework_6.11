@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+	Pupil info
+{% endblock %}
+
+{% block content %}
+	<h1>{{ pupil.name }}</h1>
+    <img src="{% static pupil.image %}" alt="{{ pupil.name }}" style="float: right;width: 150px">
+    <h2>Marks:{{ pupil.all_points }}</h2>
+    <ul>
+        <li>First month:{{ pupil.month_1 }}</li>
+        <li>Second month:{{ pupil.month_2 }}</li>
+        <li>Third month:{{ pupil.month_3 }}</li>
+    </ul>
+    <div class="d-grid">
+        <button type="button" class="btn btn-primary btn-block">
+            <a href="{% url 'edit_pupil' pupil.pk %}" style="color: white">
+                Edit Pupil
+            </a>
+        </button>
+    </div>
+    <div class="d-grid">
+        <button type="button" class="btn btn-primary btn-block">
+            <a href="{% url 'delete_pupil' pupil.pk %}" style="color: white">
+                Delete Pupil
+            </a>
+        </button>
+    </div>
+{% endblock %}

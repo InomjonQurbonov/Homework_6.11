@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+	Pupils list
+{% endblock %}
+
+{% block content %}
+	<h1>Pupils list</h1>
+    <div class="d-grid">
+        <button type="button" class="btn btn-primary btn-block">
+            <a href="{% url 'add_pupil' %}" style="color: white">
+                Add Pupil
+            </a>
+        </button>
+    </div>
+    <form action="" method="get">
+        <label for="pupil">Name:</label>
+        <input type="text" name="pupil" placeholder="Insert name ...">
+        <input type="submit" value="Search">
+    </form>
+    <table class="table table-primary">
+        <tr>
+            <th>№</th>
+            <th>FULL NAME</th>
+            <th>ALL POINTS</th>
+            <th>FULL INFORMATION</th>
+        </tr>
+    {% for pupil in pupils %}
+    	<tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ pupil.name }}</td>
+            <td>{{ pupil.all_points }}</td>
+            <td>
+                <a href="{% url 'pupil_info' pupil.id %}">See all infos</a>
+            </td>
+        </tr>
+    {% endfor %}
+
+    </table>
+{% endblock %}

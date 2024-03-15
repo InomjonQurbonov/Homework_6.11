@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	ThemesPage
+{% endblock %}
+
+{% block content %}
+    <h1>ThemesList</h1>
+        <div class="d-grid">
+        <button type="button" class="btn btn-primary btn-block">
+            <a href="{% url 'add_theme' %}" style="color: white">
+                Add Theme
+            </a>
+        </button>
+    </div>
+    <table class="table table-primary">
+        <tr>
+            <th>№</th>
+            <th>ThemeTitle</th>
+            <th>ThemeDescription</th>
+        </tr>
+    {% for theme in themes%}
+    	<tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ theme.title }}</td>
+            <td>
+                <a href="{% url 'theme_detail' theme.id %}">See all infos</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

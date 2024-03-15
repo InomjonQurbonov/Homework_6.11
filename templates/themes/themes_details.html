@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	ThemesDetails
+{% endblock %}
+
+{% block content %}
+	<h1>{{ theme.title }}</h1>
+    <img src="{% static theme.image %}" alt="{{ theme.title }}" style="float: right;width: 150px">
+    <h2>Description:</h2>
+    <ul>
+        <li>{{ theme.description1 }}</li>
+    </ul>
+        <div class="d-grid">
+        <button type="button" class="btn btn-primary btn-block">
+            <a href="{% url 'edit_theme' theme.pk %}" style="color: white">
+                Edit Theme
+            </a>
+        </button>
+    </div>
+    <div class="d-grid">
+        <button type="button" class="btn btn-primary btn-block">
+            <a href="{% url 'delete_theme' theme.pk %}" style="color: white">
+                Delete Theme
+            </a>
+        </button>
+    </div>
+{% endblock %}
